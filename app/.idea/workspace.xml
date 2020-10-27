@@ -37,8 +37,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/core/robotin/tests.py" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -109,7 +111,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603758916331</updated>
       <workItem from="1603758917397" duration="14590000" />
-      <workItem from="1603775377442" duration="466000" />
+      <workItem from="1603775377442" duration="782000" />
     </task>
     <servers />
   </component>
