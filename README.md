@@ -1,8 +1,8 @@
-#Prometheus chatbot admin panel
+# Prometheus chatbot admin panel
 
-Respositorio, del proyecto prometheus el cual consiste en un panel de control para un chatbot privado dentro de una empresa el cual se integra con otras herramientas de RPS, desde el cual se adminsitrará la información recolectada por el y los usuarios con acceso al mismo, entre otras. 
+Respositorio, del proyecto prometheus el cual consiste en un panel de control para un chatbot privado dentro de una empresa el cual se integra con otras herramientas de RPA, desde el cual se adminsitrará la información recolectada por el y los usuarios con acceso a la misma, entre otras. 
 
-Módulos que tendrá:
+## Módulos que tendrá:
 
 - Empleados
 - LOB's
