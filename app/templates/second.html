@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <ul>
+        {% for lob in lobs  %}
+        <li>{{ lob.lob_name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

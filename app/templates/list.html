@@ -1,0 +1,132 @@
+{% extends 'body.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'lib/adminlte/plugins/dataTables/css/dataTables.bootstrap.css' %}"/>
+    <link rel="stylesheet"
+          href="{% static 'lib/adminlte/plugins/dataTables/plugins/Responsive-2.2.6/css/responsive.bootstrap4.min.css' %}"/>
+    <link rel="stylesheet"
+          href="{% static 'lib/adminlte/plugins/dataTables/plugins/Buttons-1.6.5/css/buttons.bootstrap4.min.css' %}"/>
+
+    <script src="{% static 'lib/adminlte/plugins/dataTables/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'lib/adminlte/plugins/dataTables/js/dataTables.bootstrap4.min.js' %}"></script>
+
+
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/Responsive-2.2.6/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/Responsive-2.2.6/js/responsive.bootstrap4.min.js' %}"></script>
+
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/Buttons-1.6.5/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/Buttons-1.6.5/js/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/JSZip-2.5.0/jszip.min.js' %}"></script>
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/pdfmake-0.1.36/pdfmake.min.js' %}"></script>
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/pdfmake-0.1.36/vfs_fonts.js' %}"></script>
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/Buttons-1.6.5/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/Buttons-1.6.5/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'lib/adminlte/plugins/dataTables/plugins/Buttons-1.6.5/js/buttons.print.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table" id="data">
+            <thead>
+            {% block columns %}
+
+            {% endblock %}
+
+            </thead>
+            <tbody>
+            {% block rows %}
+
+            {% endblock %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer ">
+        <button class="btn bg-gradient-primary btntest">
+            <i class="fas fa-plus"></i> Agregar nuevo
+        </button>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $('#data').DataTable({
+            responsive: true,
+            autoWidth: false,
+            "language": {
+                url: '{% static 'lib/adminlte/plugins/dataTables/lang/es.txt' %}'
+            },
+            lengthMenu: [[5, 10, 25, 100, -1], [5, 10, 25, 100, "Todos"]],
+            pageLength: 5,
+            order: [[0, "desc"]],
+            dom: 'Bfrtip',
+            buttons: [
+                'pageLength',
+                {
+                    extend: 'excelHtml5',
+                    title: 'Data export',
+                    exportOptions: {
+                        columns: "thead th:not(.noExport)"
+                    },
+                    text: 'Exportar a Excel <i class="fas fa-file-excel"></i>',
+                    className: "btn-success",
+                    excelStyles: {                      // Add an excelStyles definition
+                        cells: "2",                     // to row 2
+                        style: {                        // The style block
+                            font: {                     // Style the font
+                                name: "Arial",          // Font name
+                                size: "14",             // Font size
+                                color: "FFFFFF",        // Font Color
+                                b: false,               // Remove bolding from header row
+                            },
+                            fill: {                     // Style the cell fill (background)
+                                pattern: {              // Type of fill (pattern or gradient)
+                                    color: "457B9D",    // Fill color
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            columnDefs: [{
+                targets: -1,
+                visible: true
+            }]
+        });
+        $('.btntest').on('click', function () {
+            $.ajax({
+                url: '{% url 'brain:lob_list' %}',
+                type: 'POST',
+                data: {id: 1},
+                dataType: 'JSON'
+            }).done(function (data) {
+                console.log(data)
+            }).fail(function (data) {
+
+            }).always(function (data) {
+
+            })
+
+        })
+        {#$(function () {#}
+        {#    $('table').DataTable({#}
+        {#        dom: 'lBfrtip',#}
+        {#        language: {"search": "_INPUT_", "searchPlaceholder": "Filter here "},#}
+        {#        lengthMenu: [[10, 25, 50, 100, -1], ['10', '25', '50', '100', 'Tout']],#}
+        {#        buttons: [{#}
+        {#            extend: 'collection',#}
+        {#            text: 'Export ...',#}
+        {#            buttons: [{#}
+        {#                extend: 'pdf',#}
+        {#                title: 'Test Data export',#}
+        {#                exportOptions: {columns: "thead th:not(.noExport)"}#}
+        {#            }, {#}
+        {#                extend: 'excel',#}
+        {#                title: 'Test Data export',#}
+        {#                exportOptions: {columns: "thead th:not(.noExport)"}#}
+        {#            }, {extend: 'csv', title: 'Test Data export', exportOptions: {columns: "thead th:not(.noExport)"}}]#}
+        {#        }]#}
+        {#    });#}
+    </script>
+
+{% endblock %}

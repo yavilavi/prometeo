@@ -1,0 +1,25 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha creación</th>
+                <th scope="col">Fecha de modificación</th>
+                <th scope="col" class="noExport">Acciones</th>
+            </tr>
+{% endblock %}
+{% block rows %}
+    {% for lob in object_list %}
+                <tr>
+                    <td>{{ lob.id }}</td>
+                    <td>{{ lob.lob_name }}</td>
+                    <td>{{ lob.created_at }}</td>
+                    <td>{{ lob.updated_at }}</td>
+                    <td>
+                        <button type="button" class="btn bg-gradient-warning btn-xs"><i class="fas fa-pencil-alt"></i></button>
+                        <button type="button" class="btn bg-gradient-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            {% endfor %}
+{% endblock %}
