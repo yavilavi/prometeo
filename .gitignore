@@ -2,3 +2,5 @@
 db.py
 /app/config/__pycache__
 /app/.vscode
+/.vscode
+/config/__pycache__
