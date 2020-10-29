@@ -5,3 +5,4 @@ db.py
 /.vscode
 /config/__pycache__
 /app/.idea
+app/core/brain/__pycache__/*
