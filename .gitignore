@@ -1,3 +1,4 @@
 /env
 db.py
 /app/config/__pycache__
+/.vscode
