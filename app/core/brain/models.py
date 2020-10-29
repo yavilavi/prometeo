@@ -42,7 +42,7 @@ class Agents(models.Model):
     ccms_id = models.CharField(max_length=10, null=True, blank=True, verbose_name='Número de ccms')
     slack_id = models.CharField(max_length=20, null=False, blank=False, verbose_name='id de usuario en slack')
     dtvpan_user = models.CharField(max_length=50, null=True, blank=False, verbose_name='Usuario dtvpan')
-    manager = models.ForeignKey('self', on_delete=models.PROTECT, verbose_name='Jefe inmediato')
+    manager = models.ForeignKey('self',null=True, blank=True, on_delete=models.PROTECT, verbose_name='Jefe inmediato')
     position = models.ForeignKey(Position, on_delete=models.PROTECT, verbose_name='Cargo del empleado')
     lob = models.ForeignKey(Lob, on_delete=models.PROTECT)
     profile_picture = models.ImageField(upload_to='img/profile_pictures/%Y/%m/%d')
