@@ -4,3 +4,4 @@ db.py
 /app/.vscode
 /.vscode
 /config/__pycache__
+app/config/__pycache__/db.cpython-37.pyc
