@@ -1,1 +1,7 @@
+/env
+db.py
+/config/__pycache__/*
+/app/.vscode
+/.vscode
 /config/__pycache__
+/config/__pycache__/db.cpython-37.pyc
